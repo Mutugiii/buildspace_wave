@@ -7,10 +7,12 @@ import "hardhat/console.sol";
 contract WavePortal {
   uint256 totalWaves;
   
+  // struct with waver specific data
   struct waverData {
     uint256 count;
     uint256 timestamp;
   }
+  // mapping address to waver data 
   mapping(address => waverData) waver;
 
   constructor () {
@@ -19,6 +21,7 @@ contract WavePortal {
 
   function wave() public {
     totalWaves += 1;
+    // Count the individual waves and block timestamps
     waver[msg.sender].count += 1;
     waver[msg.sender].timestamp = block.timestamp;
 
